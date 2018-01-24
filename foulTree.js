@@ -101,5 +101,5 @@
     }
 })();
 
-foulTree = new AhoCorasick(['υσι', 'υεπ', 'υσÿκ']);	
+foulTree = new AhoCorasick( ['Ρ…ΡƒΠΉ', 'Ρ…ΠµΡ€', 'Ρ…ΡƒΡΠΊ'] );	
 
