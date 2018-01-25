@@ -4,9 +4,10 @@
 </head>
 <body>
 <p><b>Введите текст:</b><br>
-   <input type="text" id="inputText" size="50" value="Смело, товарищи, в ногу!">
+   <input type="text" id="inputText" size="70" value="Смело, товарищи, в ногу!">
   </p>
   <input type="button" value="Проверить" onclick ="findMat()"></p>
+  <p><span id = "messages"></span></p>	
   <p><textarea rows="20" cols="45" id="resultText"></textarea></p>
 </body>
 </html>
@@ -16,14 +17,31 @@
 function findMat() {	
 	
 	var text = document.getElementById("inputText").value;
-	var results = foulTree.search( text );
-	var answer = "";	
-	for (var i = 0; i < results.length; i++) {
 	
-		answer = answer + "поз. " + String( results[i][0] ) + " - " + results[i][1] +"\n";
+	try {
+
+		var results = foulTree.search( text );
+		
+		if (  results.length > 0 ) {
+			document.getElementById("messages").innerHTML = "Мат обнаружен!";
+		}
+		else document.getElementById("messages").innerHTML = "Мат не обнаружен!";
+		
+		var answer = "";	
+		for (var i = 0; i < results.length; i++) {
+
+			answer = answer + "поз. " + String( results[i][0] ) + " - " + results[i][1] +"\n";
+
+		}
+		
+		document.getElementById("resultText").value = answer;		
+
+	} catch (err) {
+
+		document.getElementById("messages").innerHTML = "Ошибка! Возможно, библиотека не найдена.";
 	
 	}
-	document.getElementById("resultText").value = answer;
+	
 }
 
 	
